@@ -6,13 +6,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { blue } from "@mui/material/colors";
+import ItemCount from "./ItemCount";
 
 const style = {
   button: {
-    justifyContent: "center"
-  }
-}
-
+    justifyContent: "center",
+  },
+};
 
 function Tarjeta() {
   return (
@@ -26,8 +26,11 @@ function Tarjeta() {
           Productos Comestibles
         </Typography>
       </CardContent>
+      <ItemCount />
       <CardActions sx={style.button}>
-        <Button variant="contained" size="small">Agregar al carrito</Button>
+        <Button variant="contained" size="small">
+          Agregar al carrito
+        </Button>
       </CardActions>
     </Card>
   );
