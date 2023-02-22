@@ -5,7 +5,7 @@ import { AddShoppingCart } from '@mui/icons-material';
 function CartWidget() {
   return (
     <div>
-        <Button color="inherit" size='large' variant="outlined" startIcon={<AddShoppingCart/>}>5</Button>
+        <Button sx={{ color: "black" }} size='large' variant="outlined" startIcon={<AddShoppingCart/>}>5</Button>
     </div>
   )
 }

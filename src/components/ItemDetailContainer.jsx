@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import { Grid, Typography } from "@mui/material";
 import { StockProductos } from "../data/Stock";
-import { useParams } from "react-router-dom";
+import ItemDetail from "./ItemDetail";
 import { grey } from "@mui/material/colors";
-import ItemList from "./ItemList";
+import { Grid, Typography } from "@mui/material";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
-function ItemListContainer() {
-  const { categoria } = useParams();
+function ItemDetailContainer() {
+  const {id} = useParams();
   const [productos, setProductos] = useState();
 
   function getDatos() {
@@ -16,12 +16,12 @@ function ItemListContainer() {
         reject(new Error("No hay datos"));
       }
       setTimeout(() => {
-        const catFilter = StockProductos.filter((producto)=> producto.categoria === categoria)
-        resolve(catFilter);
+        const productoFilter = StockProductos.filter((prod)=> prod.id === id);
+        resolve(productoFilter);
       }, 2000);
     });
   }
-
+  
   async function fechingData() {
     try {
       const datosStock = await getDatos();
@@ -30,33 +30,29 @@ function ItemListContainer() {
       console.log(err);
     }
   }
-
+  
   useEffect(() => {
     fechingData();
   }, []);
-
+  
   const style = {
     box: {
       bgcolor: grey[200],
-      minHeight: "100vh"
     },
   };
 
-  const catFilter = StockProductos.filter((producto)=> producto.categoria === categoria)
   return (
     <Grid sx={style.box} container spacing={2}>
-      <Grid mb={3} mt={3} item md={12}>
+      <Grid mt={3} item md={12}>
         <Typography textAlign={"center"} variant="h4" color={"black"}>
           Productos
         </Typography>
       </Grid>
-      {categoria ? (
-        <ItemList productos={catFilter} />
-      ) : (
-        <ItemList productos={StockProductos} />
-      )}
+      <ItemDetail productos={StockProductos} />
+      <Grid mb={3} sx={style.gridButton} item xs={12}>
+      </Grid>
     </Grid>
   );
 }
 
-export default ItemListContainer;
+export default ItemDetailContainer;

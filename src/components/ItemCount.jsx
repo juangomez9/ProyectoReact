@@ -5,11 +5,16 @@ import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import { Typography } from "@mui/material";
 
 const style = {
-    span: {
-        margin: 1,
+    box: {
+      display: "flex"
     },
     button: {
-      ml: 8,
+      minWidth: 10,
+      color: "black",
+    },
+    span: {
+      mr: 1,
+      ml: 1,
     }
 }
 
@@ -20,10 +25,10 @@ function ItemCount() {
   const quitar = () => setCount(count - 1)
 
   return (
-    <div>
-      <Button sx={style.button} disabled={count <= 0} onClick={quitar}><HorizontalRuleIcon/></Button>
+    <div sx={style.box}>
+      <Button sx={style.button} variant="outlined" size="small" disabled={count <= 0} onClick={quitar}><HorizontalRuleIcon fontSize="30" /></Button>
       <Typography sx={style.span} component="span">{count}</Typography>
-      <Button onClick={agregar}><AddIcon/></Button>
+      <Button sx={style.button} variant="outlined" size="small" onClick={agregar}><AddIcon fontSize="30" /></Button>
     </div>
   );
 }
