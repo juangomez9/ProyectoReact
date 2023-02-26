@@ -3,22 +3,17 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { yellow } from "@mui/material/colors";
 import { useParams } from "react-router-dom";
-import { StockProductos } from "../data/Stock";
+import ItemCount from "./ItemCount";
 
-function ItemDetail(productos) {
+function ItemDetail({ productos }) {
   const { id } = useParams();
-
-  const productoFilter = StockProductos.filter(
-    (producto) => producto.id === id
-  );
 
   const style = {
     card: {
-      bgcolor: yellow[50],
+      bgcolor: "white",
     },
     cardActions: {
       justifyContent: "space-around",
@@ -28,15 +23,14 @@ function ItemDetail(productos) {
       bgcolor: yellow[700],
       color: "black",
     },
-    span: {
-      textDecoration: "line-through",
-    },
   };
+
+  const productoFilter = productos.filter((prod) => prod.id == id);
 
   return (
     <>
       {productoFilter.map((prod) => (
-        <Card elevation={4} sx={style.card}>
+        <Card key={prod.id} elevation={4} sx={style.card}>
           <CardMedia
             sx={{ height: 270 }}
             image={prod.img}
@@ -58,16 +52,14 @@ function ItemDetail(productos) {
               Descripcion: {prod.descripcion}
             </Typography>
             <Typography variant="body2" color="text.secondary" align="center">
-              Categoria: ${prod.categoria}
+              Categoria: {prod.categoria}
             </Typography>
             <Typography variant="body2" color="text.secondary" align="center">
-              Stock: ${prod.stock}
+              Stock: {prod.stock}
             </Typography>
           </CardContent>
           <CardActions sx={style.cardActions}>
-            <Button sx={style.button} variant="contained" size="small">
-              Details
-            </Button>
+            <ItemCount />
           </CardActions>
         </Card>
       ))}

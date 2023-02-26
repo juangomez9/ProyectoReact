@@ -6,26 +6,22 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { yellow } from "@mui/material/colors";
-import ItemCount from "./ItemCount";
+import { Link } from "react-router-dom";
 
 const style = {
   card: {
-    bgcolor: yellow[50],
+    bgcolor: "white",
   },
   cardActions: {
-    justifyContent: "space-around",
-    display: "flex",
+    justifyContent: "center",
   },
   button: {
     bgcolor: yellow[700],
     color: "black",
   },
-  span: {
-    textDecoration: "line-through",
-  },
 };
 
-function Item({ id, img, nombre, precio, descripcion, categoria, stock }) {
+function Item({ id, img, nombre, categoria, stock }) {
   return (
     <Card key={id} elevation={4} sx={style.card}>
       <CardMedia sx={{ height: 270 }} image={img} title="productos"></CardMedia>
@@ -34,14 +30,18 @@ function Item({ id, img, nombre, precio, descripcion, categoria, stock }) {
           {nombre}
         </Typography>
         <Typography variant="body2" color="text.secondary" align="center">
-          Precio: ${precio} <br /> {descripcion} <br /> {categoria} <br /> Stock: {stock}
+          Categoria: {categoria}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" align="center">
+          Stock: {stock}
         </Typography>
       </CardContent>
       <CardActions sx={style.cardActions}>
-        <Button sx={style.button} variant="contained" size="small">
-          Comprar
-        </Button>
-        <ItemCount />
+        <Link to={`/item/${id}`}>
+          <Button sx={style.button} variant="contained" size="small">
+            Detalles del producto
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );

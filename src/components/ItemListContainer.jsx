@@ -16,8 +16,7 @@ function ItemListContainer() {
         reject(new Error("No hay datos"));
       }
       setTimeout(() => {
-        const catFilter = StockProductos.filter((producto)=> producto.categoria === categoria)
-        resolve(catFilter);
+        resolve(StockProductos);
       }, 2000);
     });
   }
@@ -25,7 +24,7 @@ function ItemListContainer() {
   async function fechingData() {
     try {
       const datosStock = await getDatos();
-      setProductos(datosStock)
+      setProductos(datosStock);
     } catch (err) {
       console.log(err);
     }
@@ -38,23 +37,28 @@ function ItemListContainer() {
   const style = {
     box: {
       bgcolor: grey[200],
-      minHeight: "100vh"
+      minHeight: "100vh",
     },
   };
 
-  const catFilter = StockProductos.filter((producto)=> producto.categoria === categoria)
+  const catFilter = StockProductos.filter(
+    (prod) => prod.categoria == categoria
+  );
+
   return (
     <Grid sx={style.box} container spacing={2}>
-      <Grid mb={3} mt={3} item md={12}>
+      <Grid mb={1} mt={3} item xs={12} md={12}>
         <Typography textAlign={"center"} variant="h4" color={"black"}>
           Productos
         </Typography>
       </Grid>
-      {categoria ? (
-        <ItemList productos={catFilter} />
-      ) : (
-        <ItemList productos={StockProductos} />
-      )}
+      <Grid item xs={12}>
+        {categoria ? 
+          <ItemList productos={catFilter} />
+         : 
+          <ItemList productos={StockProductos} />
+        }
+      </Grid>
     </Grid>
   );
 }

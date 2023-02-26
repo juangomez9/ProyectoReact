@@ -32,17 +32,13 @@ const style = {
     justifyContent: "space-around",
     alignItems: "center",
   },
-  text: {
-    display: "flex",
-    alignItems: "center",
-    fontSize: "20px",
-    color: "black",
-    p: 0,
-  },
   carrito: {
     display: "flex",
     justifyContent: "end",
   },
+  menuItem: {
+    color: "black"
+  }
 };
 
 function NavBar() {
@@ -82,19 +78,19 @@ function NavBar() {
                 onClose={handleCloseCategory}
               >
                 <Link to={`/categoria/${"Alimentos"}`}>
-                  <MenuItem onClick={handleCloseCategory}>Alimentos</MenuItem>
+                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>Alimentos</MenuItem>
                 </Link>
                 <Link to={`/categoria/${"Chocolates"}`}>
-                  <MenuItem onClick={handleCloseCategory}>Chocolates</MenuItem>
+                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>Chocolates</MenuItem>
                 </Link>
                 <Link to={`/categoria/${"Kiosco"}`}>
-                  <MenuItem onClick={handleCloseCategory}>Kiosco</MenuItem>
+                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>Kiosco</MenuItem>
                 </Link>
                 <Link to={`/categoria/${"Tabaqueria"}`}>
-                  <MenuItem onClick={handleCloseCategory}>Tabaqueria</MenuItem>
+                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>Tabaqueria</MenuItem>
                 </Link>
                 <Link to={`/categoria/${"Vinos"}`}>
-                  <MenuItem onClick={handleCloseCategory}>Vinos</MenuItem>
+                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>Vinos</MenuItem>
                 </Link>
               </Menu>
             </Grid>
