@@ -37,8 +37,11 @@ function ItemListContainer() {
   const style = {
     box: {
       bgcolor: grey[200],
-      minHeight: "100vh",
     },
+    gridProductos: {
+      display: "flex",
+      justifyContent: "space-around"
+    }
   };
 
   const catFilter = StockProductos.filter(
@@ -47,7 +50,7 @@ function ItemListContainer() {
 
   return (
     <Grid sx={style.box} container spacing={2}>
-      <Grid mb={1} mt={3} item xs={12} md={12}>
+      <Grid mb={1} mt={5} item xs={12} md={12}>
         <Typography textAlign={"center"} variant="h4" color={"black"}>
           Productos
         </Typography>

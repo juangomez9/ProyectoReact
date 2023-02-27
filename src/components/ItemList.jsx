@@ -3,9 +3,18 @@ import Item from "./Item";
 import Grid from "@mui/material/Grid"
 
 function ItemList({ productos }) {
+
+  const style = {
+    gridProductos: {
+      display: "flex",
+      justifyContent: "center",
+      minHeight: "100vh"
+    }
+  };
+
   return (
     <>
-      <Grid container p={2} spacing={2}>
+      <Grid sx={style.gridProductos} mt={2} container p={2} spacing={2}>
         {productos?.map((prod) => (
           <Grid item xs={2}>
             <Item
