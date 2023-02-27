@@ -4,6 +4,8 @@ _Este proyecto de e-commerce se va a utilizar en una distribuidora para que sus 
 
 **_El proyecto se encuentra en etapa de desarrollo, a medida que avance el tiempo se le iran agregando nuevas funcionalidades._**
 
+<img src="https://github.com/juangomez9/ProyectoReact/blob/SegundaEntrega/Animation.gif" width="500" height="320" />
+
 ---
 
 ### Desarrollador del proyecto
