@@ -24,9 +24,9 @@ const style = {
 function Item({ id, img, nombre, categoria, stock }) {
   return (
     <Card key={id} elevation={4} sx={style.card}>
-      <CardMedia sx={{ height: 270 }} image={img} title="productos"></CardMedia>
+      <CardMedia align="center" sx={{ height: 150 }} title="productos"><img src={img} width={"150px"}></img></CardMedia>
       <CardContent>
-        <Typography gutterBottom variant="h10" component="div" align="center">
+        <Typography gutterBottom variant="h6" component="div" align="center">
           {nombre}
         </Typography>
         <Typography variant="body2" color="text.secondary" align="center">

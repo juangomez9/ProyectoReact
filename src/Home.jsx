@@ -1,14 +1,16 @@
 import React from "react";
-import MiCarousel from "./components/MiCarousel";
 import BarraOpciones from "./components/OptionsBar";
-import CategoriesCarousel from "./components/CategoriesCaruosel";
+import Oferts from "./components/Oferts";
+import Notices from "./components/Notices";
+import CardCategories from "./components/CardCategories";
 
 function Home() {
   return (
     <>
-      <MiCarousel />
+      <Notices />
       <BarraOpciones />
-      <CategoriesCarousel />
+      <CardCategories />
+      <Oferts />
     </>
   );
 }

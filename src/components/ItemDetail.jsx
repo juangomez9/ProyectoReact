@@ -24,67 +24,74 @@ function ItemDetail({ productos }) {
       bgcolor: yellow[700],
       color: "black",
     },
-    gridContainer: {
-      minHeight: "100vh",
-    },
   };
 
-  const productoFilter = productos.filter((prod) => prod.id == id);
+  const productoFilter = productos && productos.filter((prod) => prod.id == id);
 
   return (
     <>
-      <Grid sx={style.gridContainer} container xs={12}>
+      <Grid container xs={12} mb={"30%"}>
         <Grid item>
-          {productoFilter.map((prod) => (
-            <Card key={prod.id} elevation={4} sx={style.card}>
-              <CardMedia
-                sx={{ height: 270 }}
-                image={prod.img}
-                title="productos"
-              ></CardMedia>
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h10"
-                  component="div"
+          {productoFilter &&
+            productoFilter.map((prod) => (
+              <Card key={prod.id} elevation={4} sx={style.card}>
+                <CardMedia
                   align="center"
+                  sx={{ height: 150 }}
+                  title="productos"
                 >
-                  {prod.nombre}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  align="center"
-                >
-                  Precio: ${prod.precio}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  align="center"
-                >
-                  Descripcion: {prod.descripcion}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  align="center"
-                >
-                  Categoria: {prod.categoria}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  align="center"
-                >
-                  Stock: {prod.stock}
-                </Typography>
-              </CardContent>
-              <CardActions sx={style.cardActions}>
-                <ItemCount />
-              </CardActions>
-            </Card>
-          ))}
+                  <img src={prod.imagen} width={"150px"}></img>
+                </CardMedia>
+                <CardContent>
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    align="center"
+                  >
+                    {prod.categoria}
+                  </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="div"
+                    align="center"
+                    mb={0}
+                  >
+                    {prod.nombre}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    align="center"
+                  >
+                    Precio: ${prod.precio}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    align="center"
+                  >
+                    Descripcion: {prod.descripcion}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    align="center"
+                  >
+                    Stock: {prod.stock}
+                  </Typography>
+                </CardContent>
+                <CardActions sx={style.cardActions}>
+                  <ItemCount
+                    stock={prod.stock}
+                    id={prod.id}
+                    precio={prod.precio}
+                    nombre={prod.nombre}
+                    img={prod.imagen}
+                  />
+                </CardActions>
+              </Card>
+            ))}
         </Grid>
       </Grid>
     </>

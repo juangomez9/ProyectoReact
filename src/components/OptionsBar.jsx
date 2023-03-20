@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import AttachEmailIcon from "@mui/icons-material/AttachEmail";
 import { yellow } from "@mui/material/colors";
+import { Link } from "react-router-dom";
 
 const style = {
   box: {
@@ -13,7 +14,7 @@ const style = {
     justifyContent: "center",
     alignItems: "center",
     bgcolor: yellow[700],
-    height: "100px"
+    height: "100px",
   },
   div: {
     ml: 5,
@@ -24,18 +25,21 @@ function BarraOpciones() {
   return (
     <Box sx={style.box}>
       <Box sx={style.div}>
-        <Button>
-          <LocalShippingIcon sx={{ fontSize: 70, color: "black" }} />
-          <Typography
-            sx={{ ml: 3, textTransform: "capitalize" }}
-            component={"span"}
-            color={"black"}
-          >
-            Envios <br /> todo sobre nuestros envios <br /> Haz click aqui
-          </Typography>
-        </Button>
+        <Link to="https://www.andreani.com/#!/personas" target={"_blank"}>
+          <Button>
+            <LocalShippingIcon sx={{ fontSize: 70, color: "black" }} />
+            <Typography
+              sx={{ ml: 3, textTransform: "capitalize" }}
+              component={"span"}
+              color={"black"}
+            >
+              Envios <br /> todo sobre nuestros envios <br /> Haz click aqui
+            </Typography>
+          </Button>
+        </Link>
       </Box>
       <Box sx={style.div}>
+        <Link to="/catalogo">
         <Button>
           <InventoryIcon sx={{ fontSize: 70, color: "black" }} />
           <Typography
@@ -46,8 +50,10 @@ function BarraOpciones() {
             Productos <br /> Realiza tu pedido ahora <br /> Haz click aqui
           </Typography>
         </Button>
+        </Link>
       </Box>
       <Box sx={style.div}>
+        <Link to="/contacto">
         <Button>
           <AttachEmailIcon sx={{ fontSize: 70, color: "black" }} />
           <Typography
@@ -58,6 +64,7 @@ function BarraOpciones() {
             Contacto <br /> Contacta a nuestros vendedores <br /> Haz click aqui
           </Typography>
         </Button>
+        </Link>
       </Box>
     </Box>
   );

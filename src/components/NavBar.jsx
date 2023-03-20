@@ -9,7 +9,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { yellow } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
@@ -25,7 +24,7 @@ const style = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    pr: 20
+    pr: 10
   },
   inicio: {
     display: "flex",
@@ -37,8 +36,12 @@ const style = {
     justifyContent: "end",
   },
   menuItem: {
-    color: "black"
-  }
+    color: "black",
+  },
+  buttons: {
+    ml: 5,
+    color: "black",
+  },
 };
 
 function NavBar() {
@@ -62,12 +65,15 @@ function NavBar() {
               </Link>
             </Grid>
             <Grid item xs={12} md={7} sx={style.menu}>
+              <Link to="/">
+                <Button sx={{ color: "black" }}>Inicio</Button>
+              </Link>
               <Link to="/catalogo">
-              <Button sx={{ color: "black" }}>Catalogo</Button>
+                <Button sx={style.buttons}>Catalogo</Button>
               </Link>
               <Button
                 endIcon={<ExpandMoreIcon />}
-                sx={{ color: "black" }}
+                sx={style.buttons}
                 onClick={handleAnchorCategory}
               >
                 Categorias
@@ -78,27 +84,34 @@ function NavBar() {
                 onClose={handleCloseCategory}
               >
                 <Link to={`/categoria/${"Alimentos"}`}>
-                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>Alimentos</MenuItem>
+                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>
+                    Alimentos
+                  </MenuItem>
                 </Link>
                 <Link to={`/categoria/${"Chocolates"}`}>
-                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>Chocolates</MenuItem>
+                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>
+                    Chocolates
+                  </MenuItem>
                 </Link>
                 <Link to={`/categoria/${"Kiosco"}`}>
-                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>Kiosco</MenuItem>
+                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>
+                    Kiosco
+                  </MenuItem>
                 </Link>
                 <Link to={`/categoria/${"Tabaqueria"}`}>
-                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>Tabaqueria</MenuItem>
+                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>
+                    Tabaqueria
+                  </MenuItem>
                 </Link>
                 <Link to={`/categoria/${"Vinos"}`}>
-                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>Vinos</MenuItem>
+                  <MenuItem sx={style.menuItem} onClick={handleCloseCategory}>
+                    Vinos
+                  </MenuItem>
                 </Link>
               </Menu>
             </Grid>
             <Grid item xs={12} md={2} sx={style.carrito}>
-              <Button sx={{ color: "black" }} startIcon={<AccountCircleIcon />}>
-                Ingresar
-              </Button>
-              <Link to="/cart">
+              <Link to={"/cart"}>
                 <CartWidget />
               </Link>
             </Grid>

@@ -1,37 +1,21 @@
 import React, { useEffect } from "react";
-import { StockProductos } from "../data/Stock";
 import ItemDetail from "./ItemDetail";
 import { grey } from "@mui/material/colors";
 import { Grid, Typography } from "@mui/material";
-import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 function ItemDetailContainer() {
-  const { id } = useParams();
   const [productos, setProductos] = useState();
 
-  function getDatos() {
-    return new Promise((resolve, reject) => {
-      if (StockProductos.length === 0) {
-        reject(new Error("No hay datos"));
-      }
-      setTimeout(() => {
-        resolve(StockProductos);
-      }, 2000);
-    });
-  }
-
-  async function fechingData() {
-    try {
-      const datosStock = await getDatos();
-      setProductos(datosStock);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   useEffect(() => {
-    fechingData();
+    const db = getFirestore();
+
+    const itemsCollection = collection(db, "productos");
+    getDocs(itemsCollection).then((snapshot) => {
+      const docs = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      setProductos(docs);
+    });
   }, []);
 
   const style = {
@@ -39,8 +23,6 @@ function ItemDetailContainer() {
       bgcolor: grey[200],
     },
   };
-
-  const productoFilter = StockProductos.filter((prod) => prod.id === id);
 
   return (
     <Grid sx={style.box} container spacing={3}>
@@ -51,7 +33,7 @@ function ItemDetailContainer() {
       </Grid>
       <Grid item xs={5}></Grid>
       <Grid item xs={2}>
-        <ItemDetail productos={StockProductos} />
+        <ItemDetail productos={productos} />
         <Grid item xs={5}></Grid>
       </Grid>
     </Grid>
