@@ -3,27 +3,10 @@ import { Grid, Typography } from "@mui/material";
 import Item from "./Item";
 import { grey } from "@mui/material/colors";
 import { useState } from "react";
-// import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
-import { useParams } from "react-router-dom";
 
 function Oferts() {
-  // const [producto, setProducto] = useState([]);
-
-  // useEffect(() => {
-  //   const db = getFirestore();
-
-  //   const items = doc(db, "productos", "05p0vgDnGK8rGDz5Ux5d");
-  //   getDoc(items).then((snapshot) => {
-  //     if (snapshot.exists()) {
-  //       const docs = snapshot.data();
-  //       setProducto(docs);
-  //     }
-  //   });
-  // }, []);
-
   const [productos, setProductos] = useState([]);
-  const { id } = useParams();
 
   useEffect(() => {
     const db = getFirestore();
