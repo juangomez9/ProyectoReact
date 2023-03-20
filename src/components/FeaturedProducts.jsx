@@ -5,7 +5,7 @@ import { grey } from "@mui/material/colors";
 import { useState } from "react";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 
-function Oferts() {
+function FeaturedProducts() {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
@@ -67,4 +67,4 @@ function Oferts() {
   );
 }
 
-export default Oferts;
+export default FeaturedProducts;

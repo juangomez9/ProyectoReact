@@ -1,8 +1,8 @@
 import React from "react";
 import BarraOpciones from "./components/OptionsBar";
-import Oferts from "./components/FeaturedProducts";
 import Notices from "./components/Notices";
 import CardCategories from "./components/CardCategories";
+import FeaturedProducts from "./components/FeaturedProducts";
 
 function Home() {
   return (
@@ -10,7 +10,7 @@ function Home() {
       <Notices />
       <BarraOpciones />
       <CardCategories />
-      <Oferts />
+      <FeaturedProducts />
     </>
   );
 }
