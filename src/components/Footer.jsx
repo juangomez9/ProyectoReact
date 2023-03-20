@@ -1,6 +1,5 @@
 import { Divider, Grid, Typography } from "@mui/material";
 import React from "react";
-import { Box } from "@mui/material";
 import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PercentIcon from "@mui/icons-material/Percent";

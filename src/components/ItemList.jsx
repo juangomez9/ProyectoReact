@@ -1,6 +1,6 @@
 import React from "react";
 import Item from "./Item";
-import Grid from "@mui/material/Grid";
+import { Grid } from "@mui/material";
 
 function ItemList({ productos }) {
   const style = {

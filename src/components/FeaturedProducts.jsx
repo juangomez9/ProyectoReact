@@ -20,8 +20,6 @@ function FeaturedProducts() {
 
   const prods = productos.slice(0, 12);
 
-  console.log(prods);
-
   const style = {
     grid: {
       bgcolor: grey[50],
@@ -51,7 +49,7 @@ function FeaturedProducts() {
       </Grid>
       <Grid container xs={10} spacing={2} display="flex" mb={"5%"}>
         {prods.map((item) => (
-          <Grid item xs={2}>
+          <Grid item xs={2} key={item.id}>
             <Item
               sx={style.items}
               id={item.id}

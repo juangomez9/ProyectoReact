@@ -75,8 +75,8 @@ function CardCategories() {
       </Box>
       <Box sx={style.box1}>
         {items.map((item, i) => (
-          <Link to={item.link}>
-            <Paper component={Button} key={i} elevation={3} sx={style.paper}>
+          <Link to={item.link} key={i}>
+            <Paper component={Button} elevation={3} sx={style.paper}>
               <img src={item.img}></img>
               <Typography>{item.nombre}</Typography>
             </Paper>

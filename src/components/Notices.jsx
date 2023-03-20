@@ -1,5 +1,5 @@
 import { Button, Paper, Typography } from "@mui/material";
-import { deepOrange, yellow } from "@mui/material/colors";
+import { yellow } from "@mui/material/colors";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 
